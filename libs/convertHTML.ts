@@ -1,4 +1,4 @@
-export default async function contertHTML(body: any) {
+export default async function convertHTML(body: any) {
 
     function calDateTime(inputString: string) {
         return inputString.substring(0, 16)
@@ -52,6 +52,10 @@ export default async function contertHTML(body: any) {
 
         .heart{
             color: #d6d4d4;
+        }
+
+        .barCode {
+            margin: 3px 0 0 3px;
         }
 
         .rightCode {
@@ -216,7 +220,7 @@ export default async function contertHTML(body: any) {
                         <div class="black-light">${barcode}</div>
                         <div class="black">${firstLocation}</div>
                     </div>
-                    <img
+                    <img class="barCode"
                         src="${barCode64}"
                         width="20"
                         height="16"
