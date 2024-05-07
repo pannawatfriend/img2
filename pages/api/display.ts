@@ -327,7 +327,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse
             </div>`
    
         const content =
-            `<div class="content kanit-extralight">
+            `<div class="content kanit-extralight" id="content">
                 ${lableCode}
                 ${statusBar}
                 <div class="signature">

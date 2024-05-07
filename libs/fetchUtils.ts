@@ -4,7 +4,7 @@ import inDelivery from "../public/images/inDelivery.png"
 import success from "../public/images/success.png"
 import barCode from "../public/images/barcode.png"
 
-const getbaseUrl = async (name) => {
+const getbaseUrl = async (name:String) => {
     switch (name) {
         case "inProcess":
             return inProcess
