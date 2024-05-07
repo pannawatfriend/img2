@@ -1,9 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import convertHTML from "../../libs/convertHTML"
-import { saveAs } from "file-saver"
-import { toBlob } from "html-to-image"
-import parse5 from "parse5"
 import * as puppeteer from "puppeteer"
+import contertHTML from "../../libs/convertHTML"
 
 export default async function handler(
     req: NextApiRequest,
@@ -37,19 +34,8 @@ export default async function handler(
         //     },
         // })
 
-        try {
-            const htmlRes = await fetch("http://localhost:3000/api/display", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(body),
-            })
-            if (!htmlRes.ok) {
-                res.status(500).send(body)
-                throw new Error("Failed to fetch data")
-            }
-            const html = await htmlRes.text()
+            const all = await contertHTML(JSON.stringify(body))
+            const html =  all
 
             const test = `<div>test</div>`
 
@@ -58,10 +44,6 @@ export default async function handler(
             // // res.status(200).send(`data:image/png;base64,${toBase64}`)
             res.setHeader("Content-Type", "image/png")
             res.status(200).send(imageBuffer)
-        } catch (e) {
-            console.log(e)
-            res.status(500).send(e)
-        }
     } else {
         // Handle other HTTP methods if needed
         res.status(405).end() // Method Not Allowed
